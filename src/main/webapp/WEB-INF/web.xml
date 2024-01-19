@@ -29,4 +29,14 @@
     <servlet-name>HomeMainServlet2</servlet-name>
     <url-pattern>/HomeMainServlet2</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>printDan</display-name>
+    <servlet-name>printDan</servlet-name>
+    <servlet-class>com.KoreaIT.java.Jsp_AM.printDan</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>printDan</servlet-name>
+    <url-pattern>/printDan</url-pattern>
+  </servlet-mapping>
 </web-app>
