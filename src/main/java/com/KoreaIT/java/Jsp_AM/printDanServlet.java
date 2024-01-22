@@ -27,7 +27,9 @@ public class printDanServlet extends HttpServlet {
 		if (inputedLimit == null) {
 			inputedLimit = "1";
 		}
-		
+		if (inputedColor == null) {
+			inputedColor = "black";
+		}
 		
 		int dan = Integer.parseInt(inputedDan);
 		int limit = Integer.parseInt(inputedLimit);
