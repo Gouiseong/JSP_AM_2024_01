@@ -71,6 +71,8 @@ int totalPage = (int) request.getAttribute("totalPage");
 		}
 		%>
 	</div>
+	
+	<a href="../article/doWrite">글 작성하기</a>
 
 
 
