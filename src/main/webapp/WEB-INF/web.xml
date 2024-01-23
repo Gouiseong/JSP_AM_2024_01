@@ -79,4 +79,14 @@
     <servlet-name>ArticleInsertServlet</servlet-name>
     <url-pattern>/ArticleInsertServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ArticleWriteServlet</display-name>
+    <servlet-name>ArticleWriteServlet</servlet-name>
+    <servlet-class>com.KoreaIT.java.Jsp_AM.servlet.ArticleWriteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticleWriteServlet</servlet-name>
+    <url-pattern>/ArticleWriteServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
