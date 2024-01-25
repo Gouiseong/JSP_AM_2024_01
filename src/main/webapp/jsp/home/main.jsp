@@ -23,6 +23,9 @@ Map<String, Object> loginedMember = (Map<String, Object>) request.getAttribute("
 	%>
 	<div>
 		<a href="../member/doLogout">로그아웃</a>
+		<ul>
+			<li><a href="../article/list">리스트로 이동</a></li>
+		</ul>
 	</div>
 	<%
 	}
@@ -34,13 +37,13 @@ Map<String, Object> loginedMember = (Map<String, Object>) request.getAttribute("
 	<div>
 		<a href="../member/login">로그인</a>
 	</div>
-	<%
-	}
-	%>
 	<ul>
 		<li><a href="../article/list">리스트로 이동</a></li>
 		<li><a href="../member/join">회원가입으로 이동</a></li>
-		<li><a href="../member/login">로그인으로 이동</a></li>
 	</ul>
+	<%
+	}
+	%>
+
 </body>
 </html>

@@ -10,6 +10,7 @@ int cPage = (int) request.getAttribute("page");
 int totalPage = (int) request.getAttribute("totalPage");
 int totalCnt = (int) request.getAttribute("totalCnt");
 int itemsInAPage = (int) request.getAttribute("itemsInAPage");
+boolean isLogined = (boolean) request.getAttribute("isLogined");
 %>
 <!DOCTYPE html>
 <html>
