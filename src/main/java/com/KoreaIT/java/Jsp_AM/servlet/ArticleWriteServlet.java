@@ -21,17 +21,15 @@ public class ArticleWriteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 
 		HttpSession session = request.getSession();
 
-		boolean isLogined = false;
-
-		if (session.getAttribute("loginedMemberId") != null) {
-			isLogined = true;
-
+		if (session.getAttribute("loginedMemberId") == null) {
+			response.getWriter().append(
+					String.format("<script>alert('로그인 후 이용해주세요'); location.replace('../member/login');</script>"));
+			return;
 		}
-
-		request.setAttribute("isLogined", isLogined);
 
 		request.getRequestDispatcher("/jsp/article/write.jsp").forward(request, response);
 	}

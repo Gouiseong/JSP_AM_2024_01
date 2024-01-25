@@ -66,16 +66,21 @@ public class ArticleListServlet extends HttpServlet {
 			request.setAttribute("itemsInAPage", itemsInAPage);
 			request.setAttribute("articleRows", articleRows);
 
+			boolean isLogined = false;
+			int loginedMemberId = -1;
+			Map<String, Object> loginedMember = null;
+
 			HttpSession session = request.getSession();
 
-			boolean isLogined = false;
-			Map<String, Object> loginedMember = null;
 			if (session.getAttribute("loginedMemberId") != null) {
 				isLogined = true;
+				loginedMemberId = (int) session.getAttribute("loginedMemberId");
 				loginedMember = (Map<String, Object>) session.getAttribute("loginedMember");
 			}
 
 			request.setAttribute("isLogined", isLogined);
+			request.setAttribute("loginedMemberId", loginedMemberId);
+			request.setAttribute("loginedMember", loginedMember);
 
 			request.getRequestDispatcher("/jsp/article/list.jsp").forward(request, response);
 
