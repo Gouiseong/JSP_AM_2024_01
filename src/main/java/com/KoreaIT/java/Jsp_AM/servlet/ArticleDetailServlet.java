@@ -45,7 +45,16 @@ public class ArticleDetailServlet extends HttpServlet {
 
 			Map<String, Object> articleRow = DBUtil.selectRow(conn, sql);
 
+			int memberId = (int) articleRow.get("memberId");
+			
+
+			sql = SecSql.from("SELECT *");
+			sql.append("FROM `member`");
+			sql.append("WHERE id = ?;", memberId);
+			Map<String, Object> memberRow = DBUtil.selectRow(conn, sql);
+
 			request.setAttribute("articleRow", articleRow);
+			request.setAttribute("memberRow", memberRow);
 			request.getRequestDispatcher("/jsp/article/detail.jsp").forward(request, response);
 
 		} catch (SQLException e) {

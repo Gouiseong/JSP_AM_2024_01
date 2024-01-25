@@ -4,6 +4,7 @@
 
 <%
 Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("articleRow");
+Map<String, Object> memberRow = (Map<String, Object>) request.getAttribute("memberRow");
 %>
 <!DOCTYPE html>
 <html>
@@ -27,14 +28,16 @@ Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("art
 	<div>
 		내용 :
 		<%=articleRow.get("body")%></div>
-
+	<div>
+		작성자 :
+		<%=memberRow.get("name")%></div>
 	<div>
 		<a style="color: green" href="list">리스트로 돌아가기</a>
 	</div>
 	<div>
 		<a style="color: green" href="doModify">글 수정하기</a>
 	</div>
-	
+
 
 
 </body>

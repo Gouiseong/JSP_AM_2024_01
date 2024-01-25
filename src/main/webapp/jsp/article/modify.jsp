@@ -4,6 +4,7 @@
 
 <%
 Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("articleRow");
+Map<String, Object> memberRow = (Map<String, Object>) request.getAttribute("memberRow");
 %>
 <!DOCTYPE html>
 <html>
