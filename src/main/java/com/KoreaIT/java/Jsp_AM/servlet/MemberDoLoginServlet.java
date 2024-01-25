@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 import com.KoreaIT.java.Jsp_AM.config.Config;
 import com.KoreaIT.java.Jsp_AM.exception.SQLErrorException;
@@ -16,8 +18,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/doJoin")
-public class MemberDoJoinServlet extends HttpServlet {
+@WebServlet("/member/doRogin")
+public class MemberDoLoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,32 +37,16 @@ public class MemberDoJoinServlet extends HttpServlet {
 		try {
 			conn = DriverManager.getConnection(Config.getDbUrl(), Config.getDbUser(), Config.getDbPw());
 
-			String loginId = request.getParameter("loginId");
-			String loginPw = request.getParameter("loginPw");
-			String name = request.getParameter("name");
-
-			SecSql sql = SecSql.from("SELECT COUNT(*) AS cnt");
+//			request.setAttribute("loginId", loginId);
+			String loginId =request.getParameter("loginId");
+			String loginPw = request.getParameter("loginPw"); 
+			SecSql sql = SecSql.from("SELECT *");
 			sql.append("FROM `member`");
-			sql.append("WHERE loginId = ?;", loginId);
+			sql.append("WHERE loginId=?;",loginId);
 
-			boolean isJoinableLoginId = DBUtil.selectRowIntValue(conn, sql) == 0;
+			Map<String, Object> memberRow = DBUtil.selectRow(conn, sql);
 
-			if (isJoinableLoginId == false) {
-				response.getWriter().append(String.format(
-						"<script>alert('%s는 이미 사용중입니다'); location.replace('../member/join');</script>", loginId));
-				return;
-			}
-
-			sql = SecSql.from("INSERT INTO `member`");
-			sql.append("SET regDate = NOW(),");
-			sql.append("loginId = ?,", loginId);
-			sql.append("loginPw = ?,", loginPw);
-			sql.append("`name` = ?;", name);
-
-			int id = DBUtil.insert(conn, sql);
-
-			response.getWriter().append(String.format(
-					"<script>alert('%s님, 회원가입이 완료되었습니다.'); location.replace('../article/list');</script>", name));
+			request.getRequestDispatcher("/jsp/member/list.jsp").forward(request, response);
 
 		} catch (SQLException e) {
 			System.out.println("에러 : " + e);
