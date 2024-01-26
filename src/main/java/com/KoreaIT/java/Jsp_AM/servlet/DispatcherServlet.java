@@ -68,14 +68,18 @@ public class DispatcherServlet extends HttpServlet {
 				return;
 			}
 
-			String controllerName = requestUriBits[3];
+			String controllerName = requestUriBits[3]; 
 			String actionMethodName = requestUriBits[4];
 
+			
 			if (controllerName.equals("article")) {
 				ArticleController articleController = new ArticleController(request, response, conn);
 
 				if (actionMethodName.equals("list")) {
 					articleController.showList();
+				}
+				else if(actionMethodName.equals("write")) {
+					articleController.doWrite();
 				}
 			}
 

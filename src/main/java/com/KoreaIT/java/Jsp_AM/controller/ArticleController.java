@@ -49,4 +49,9 @@ public class ArticleController {
 		request.getRequestDispatcher("/jsp/article/list.jsp").forward(request, response);
 	}
 
+	public void doWrite() {
+		// TODO Auto-generated method stub
+
+	}
+
 }
